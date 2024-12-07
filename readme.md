@@ -1,4 +1,4 @@
-![TitanWar Combo Helper](https://github.com/user-attachments/assets/1938b570-8897-467c-85a2-d04094a6c3fd)
+![TitanWar Combo Helper](https://github.com/user-attachments/assets/fff5dfaf-9cc6-4c57-8b06-8be7a5decac7)
 # TitanWar Combo Helper
 
 A helpful tool to optimize team combinations and buff strategies in the game **TitanWar**. With this app, you can calculate the best character combinations for your teams and activate card buffs based on your preferences.
