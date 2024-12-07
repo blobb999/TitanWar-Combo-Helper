@@ -1,0 +1,201 @@
+{
+    "Überraschungsmoment": {
+        "name": {"DE": "Überraschungsmoment", "EN": "Surprise Moment"},
+        "characters": [
+            {"DE": "Larissa", "EN": "Larissa"},
+            {"DE": "Anakin", "EN": "Anakin"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Tödliche Verfolgungsjagd": {
+        "name": {"DE": "Tödliche Verfolgungsjagd", "EN": "Deadly Pursuit"},
+        "characters": [
+            {"DE": "Talbot", "EN": "Talbot"},
+            {"DE": "Gu'Gunnar", "EN": "Gu'Gunnar"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Der Tapfere": {
+        "name": {"DE": "Der Tapfere", "EN": "The Brave"},
+        "characters": [
+            {"DE": "Nick", "EN": "Nick"},
+            {"DE": "Shangguan Yun", "EN": "Shangguan Yun"}
+        ],
+        "type": {"DE": "Verteidigung", "EN": "Defense"}
+    },
+    "Unnachgiebige Abhärtung": {
+        "name": {"DE": "Unnachgiebige Abhärtung", "EN": "Relentless Hardening"},
+        "characters": [
+            {"DE": "Reo", "EN": "Reo"},
+            {"DE": "Austen", "EN": "Austen"}
+        ],
+        "type": {"DE": "Verteidigung", "EN": "Defense"}
+    },
+    "Energiewelle": {
+        "name": {"DE": "Energiewelle", "EN": "Energy Wave"},
+        "characters": [
+            {"DE": "Percival", "EN": "Percival"},
+            {"DE": "Zerberus", "EN": "Zerberus"},
+            {"DE": "Rockwell", "EN": "Rockwell"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Fesselndes Schloss": {
+        "name": {"DE": "Fesselndes Schloss", "EN": "Binding Fortress"},
+        "characters": [
+            {"DE": "Jeanne", "EN": "Jeanne"},
+            {"DE": "Theresa", "EN": "Theresa"},
+            {"DE": "Nick", "EN": "Nick"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Präventiver Vorteil": {
+        "name": {"DE": "Präventiver Vorteil", "EN": "Preventive Advantage"},
+        "characters": [
+            {"DE": "Adriana", "EN": "Adriana"},
+            {"DE": "Anakin", "EN": "Anakin"},
+            {"DE": "Larissa", "EN": "Larissa"}
+        ],
+        "type": {"DE": "Verteidigung", "EN": "Defense"}
+    },
+    "Kraftstoß": {
+        "name": {"DE": "Kraftstoß", "EN": "Power Surge"},
+        "characters": [
+            {"DE": "Reo", "EN": "Reo"},
+            {"DE": "Moody", "EN": "Moody"},
+            {"DE": "Lena", "EN": "Lena"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Tödlicher Hieb": {
+        "name": {"DE": "Tödlicher Hieb", "EN": "Fatal Strike"},
+        "characters": [
+            {"DE": "Tous", "EN": "Tous"},
+            {"DE": "Artest", "EN": "Artest"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Potentieller Ausbruch": {
+        "name": {"DE": "Potentieller Ausbruch", "EN": "Potential Outburst"},
+        "characters": [
+            {"DE": "Doris", "EN": "Doris"},
+            {"DE": "Adriana", "EN": "Adriana"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Widerstandsschild": {
+        "name": {"DE": "Widerstandsschild", "EN": "Resistance Shield"},
+        "characters": [
+            {"DE": "Bebe", "EN": "Bebe"},
+            {"DE": "Reo", "EN": "Reo"}
+        ],
+        "type": {"DE": "Verteidigung", "EN": "Defense"}
+    },
+    "Verfluchtes Auge": {
+        "name": {"DE": "Verfluchtes Auge", "EN": "Cursed Eye"},
+        "characters": [
+            {"DE": "Tyr", "EN": "Tyr"},
+            {"DE": "Rockwell", "EN": "Rockwell"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Aura der Fraktion": {
+        "name": {"DE": "Aura der Fraktion", "EN": "Faction Aura"},
+        "characters": [
+            {"DE": "Misuzu", "EN": "Misuzu"},
+            {"DE": "Melissa", "EN": "Melissa"},
+            {"DE": "Lena", "EN": "Lena"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Spöttischer Gegenangriff": {
+        "name": {"DE": "Spöttischer Gegenangriff", "EN": "Mocking Counterattack"},
+        "characters": [
+            {"DE": "Faroe", "EN": "Faroe"},
+            {"DE": "Simon", "EN": "Simon"},
+            {"DE": "Sophia", "EN": "Sophia"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Unendlicher Zorn": {
+        "name": {"DE": "Unendlicher Zorn", "EN": "Infinite Fury"},
+        "characters": [
+            {"DE": "Tenzou", "EN": "Tenzou"},
+            {"DE": "Upendo", "EN": "Upendo"},
+            {"DE": "Hassas", "EN": "Hassas"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Klage der Seelen": {
+        "name": {"DE": "Klage der Seelen", "EN": "Lament of Souls"},
+        "characters": [
+            {"DE": "Diana", "EN": "Diana"},
+            {"DE": "Flick", "EN": "Flick"},
+            {"DE": "Jeanne", "EN": "Jeanne"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Supernova-Schub": {
+        "name": {"DE": "Supernova-Schub", "EN": "Supernova Boost"},
+        "characters": [
+            {"DE": "Jerome", "EN": "Jerome"},
+            {"DE": "Larissa", "EN": "Larissa"},
+            {"DE": "Anakin", "EN": "Anakin"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Unsterblichkeitsschwur": {
+        "name": {"DE": "Unsterblichkeitsschwur", "EN": "Immortality Oath"},
+        "characters": [
+            {"DE": "Otsma", "EN": "Otsma"},
+            {"DE": "Zerberus", "EN": "Zerberus"},
+            {"DE": "Gu'Gunnar", "EN": "Gu'Gunnar"}
+        ],
+        "type": {"DE": "Verteidigung", "EN": "Defense"}
+    },
+    "Todesblüte": {
+        "name": {"DE": "Todesblüte", "EN": "Death Blossom"},
+        "characters": [
+            {"DE": "Ollus", "EN": "Ollus"},
+            {"DE": "Shangguan Yun", "EN": "Shangguan Yun"},
+            {"DE": "Artest", "EN": "Artest"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "Die Bindung des Biests": {
+        "name": {"DE": "Die Bindung des Biests", "EN": "The Beast's Bond"},
+        "characters": [
+            {"DE": "Kelly", "EN": "Kelly"},
+            {"DE": "Reo", "EN": "Reo"},
+            {"DE": "Austen", "EN": "Austen"}
+        ],
+        "type": {"DE": "Verteidigung", "EN": "Defense"}
+    },
+    "Synergisierung": {
+        "name": {"DE": "Synergisierung", "EN": "Synergization"},
+        "characters": [
+            {"DE": "Tenzou", "EN": "Tenzou"},
+            {"DE": "Kelly", "EN": "Kelly"},
+            {"DE": "Upendo", "EN": "Upendo"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
+    },
+    "En Garde": {
+        "name": {"DE": "En Garde", "EN": "En Garde"},
+        "characters": [
+            {"DE": "Diana", "EN": "Diana"},
+            {"DE": "Tyr", "EN": "Tyr"},
+            {"DE": "Theresa", "EN": "Theresa"}
+        ],
+        "type": {"DE": "Verteidigung", "EN": "Defense"}
+    },
+    "Befestigte Bastion": {
+        "name": {"DE": "Befestigte Bastion", "EN": "Fortified Bastion"},
+        "characters": [
+            {"DE": "Reo", "EN": "Reo"},
+            {"DE": "Bebe", "EN": "Bebe"},
+            {"DE": "Faroe", "EN": "Faroe"}
+        ],
+        "type": {"DE": "Verteidigung", "EN": "Defense"}
+    }
+}
