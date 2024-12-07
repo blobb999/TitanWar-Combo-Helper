@@ -52,6 +52,11 @@ A helpful tool to optimize team combinations and buff strategies in the game **T
    python TitanWar_Combo_Helper.py
    ```
 
+### Build Binary
+1. **compile:**
+   ```bash
+   pyinstaller --noconsole --onefile --add-data "data.json;." "TitanWar_Combo_Helper.py"
+   ```
 ---
 
 ## Usage
