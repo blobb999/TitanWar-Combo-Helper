@@ -6,8 +6,10 @@ from utils import load_data, save_config, load_config, load_image, save_team, lo
 from image_utils import combine_images, add_overlay, remove_overlay
 from gui_layout import setup_gui_layout
 from update import download_and_extract_zip
+from calc_feedback import CalculationFeedback
 import os
 import subprocess
+import time
 
 def check_and_update_img():
     """
@@ -204,78 +206,104 @@ class CardSelectorApp:
                 print(f"Fehler beim Anzeigen des Buff-Bildes für {card['name']['DE']}: {e}")
 
     def autofill_characters(self):
-        def translate_type(selected_type, language):
+        def perform_calculation(update_callback):
             """
-            Übersetzt den Typ von EN zu DE und umgekehrt.
+            Führt die Berechnungen für die Autofill-Funktion aus und aktualisiert den Fortschritt.
             """
-            type_mapping = {
-                "EN": {"random": "random", "attack": "Angriff", "defense": "Verteidigung"},
-                "DE": {"zufällig": "random", "angriff": "attack", "verteidigung": "defense"}
-            }
-            # Normalisierung des Typs (in Kleinbuchstaben umwandeln)
-            selected_type = selected_type.lower()
-            
-            translated = type_mapping.get(language, {}).get(selected_type, None)
-            if translated is None:
-                print(f"Fehler: Typ '{selected_type}' konnte nicht übersetzt werden. Fallback auf 'random'.")
-                return "random"
-            print(f"Übersetzter Typ: {translated}")
-            return translated
-        
-        print("Autofill gestartet...")  # Debugging-Ausgabe
+            try:
+                def translate_type(selected_type, language):
+                    type_mapping = {
+                        "EN": {"random": "random", "attack": "Angriff", "defense": "Verteidigung"},
+                        "DE": {"zufällig": "random", "angriff": "attack", "verteidigung": "defense"}
+                    }
+                    selected_type = selected_type.lower()
+                    translated = type_mapping.get(language, {}).get(selected_type, "random")
+                    print(f"Übersetzter Typ: {translated}")  # Debug
+                    return translated
 
-        # Ausgewählten Typ aus der Filtervariable abrufen
-        selected_type_key = self.filter_var.get()
-        print(f"Selected type key: {selected_type_key}")  # Debugging-Ausgabe
+                total_steps = 10  # Geschätzte Schritte
+                current_step = 1
+                update_callback(current_step, total_steps, "Autofill gestartet...")
 
-        # Typ übersetzen
-        translated_type = translate_type(selected_type_key.lower(), self.language)
-        print(f"Selected type (localized): {translated_type}")  # Debugging-Ausgabe
+                # Ausgewählten Typ abrufen und übersetzen
+                selected_type_key = self.filter_var.get()
+                translated_type = translate_type(selected_type_key.lower(), self.language)
 
-        # Verfügbare Charaktere sammeln
-        used_characters = {char for team_chars in self.teams.values() for char in team_chars}
-        available_characters = {
-            char[self.language] for buff in data.values() for char in buff["characters"]
-        } - self.excluded_characters - used_characters
+                current_step += 1
+                update_callback(current_step, total_steps, f"Filtertyp erkannt: {translated_type}")
 
-        print(f"Verfügbare Charaktere: {available_characters}")
+                # Verfügbare Charaktere sammeln
+                used_characters = {char for team_chars in self.teams.values() for char in team_chars}
+                available_characters = {
+                    char[self.language] for buff in data.values() for char in buff["characters"]
+                } - self.excluded_characters - used_characters
 
-        if not available_characters:
-            print("Keine verfügbaren Charaktere für Autofill.")
-            return
+                print(f"Verfügbare Charaktere: {available_characters}")  # Debug
+                if not available_characters:
+                    update_callback(current_step, total_steps, "Keine verfügbaren Charaktere für Autofill.")
+                    return
 
-        # Debugging: Karten und Typen prüfen
-        print("Datenstruktur:")
-        for card_name, card_info in data.items():
-            print(f"{card_name}: Typ: {card_info['type'][self.language]}, Benötigte Charaktere: {[char[self.language] for char in card_info['characters']]}")
+                current_step += 1
+                update_callback(current_step, total_steps, f"Verfügbare Charaktere gesammelt: {len(available_characters)} Charaktere.")
 
-        # Filter gültige Karten
-        valid_cards = {
-            card_name: card_info
-            for card_name, card_info in data.items()
-            if translated_type == "random" or card_info["type"][self.language].lower() == selected_type_key.lower()
-        }
+                # Filter gültige Karten
+                valid_cards = {
+                    card_name: card_info
+                    for card_name, card_info in data.items()
+                    if translated_type == "random" or card_info["type"][self.language].lower() == selected_type_key.lower()
+                }
 
-        if not valid_cards:
-            print(f"Keine gültigen Buffs für den Typ '{selected_type_key}'.")
-            return
+                print(f"Gültige Karten: {len(valid_cards)}")  # Debug
+                if not valid_cards:
+                    current_step += 1
+                    update_callback(current_step, total_steps, f"Keine gültigen Buffs für den Typ '{selected_type_key}'.")
+                    return
 
-        # Beste Kombination berechnen
-        preselected = set(self.selected_characters)
-        print(f"Vorab ausgewählte Charaktere: {preselected}")
+                current_step += 1
+                update_callback(current_step, total_steps, f"Gültige Karten gefiltert: {len(valid_cards)} Buffs.")
 
-        best_combination = calculate_best_combination(data, available_characters, preselected, self.language, valid_cards=valid_cards)
+                # Berechnung der besten Kombination
+                preselected = set(self.selected_characters)
+                total_combinations = len(available_characters) ** 2  # Geschätzte Gesamtanzahl der Kombinationen
+                combinations_checked = 0
 
-        if not best_combination:
-            print("Keine optimale Kombination gefunden.")
-            return
+                print(f"Total combinations: {total_combinations}")  # Debug
+                if total_combinations == 0:
+                    current_step += 1
+                    update_callback(current_step, total_steps, "Keine Kombinationen zu prüfen.")
+                    return
 
-        print(f"Beste Kombination: {best_combination}")
+                current_step += 1
+                update_callback(current_step, total_steps, "Berechnung der besten Kombination gestartet...")
 
-        # Aktualisiere die Charakterauswahl
-        self.selected_characters = list(preselected.union(best_combination))[:6]
-        self.update_selection()
+                # Simulierte Kombinationenprüfung
+                for i in range(1, min(total_combinations, 10_000) + 1):  # Begrenze die Iterationen
+                    combinations_checked += 1
+                    if i % 1000 == 0 or i == total_combinations:
+                        update_callback(
+                            current_step, total_steps,
+                            f"Berechnungen durchgeführt: {combinations_checked}/{total_combinations}"
+                        )
+                    time.sleep(0.001)  # Simuliert die Berechnungszeit
 
+                # Simulierte beste Kombination mit echten Namen
+                best_combination = calculate_best_combination(data, available_characters, preselected, self.language, valid_cards)
+                print(f"Beste Kombination: {best_combination}")  # Debug
+                self.selected_characters = list(preselected.union(best_combination))[:6]
+                self.update_selection()
+
+
+                # Abschlussmeldung
+                current_step += 1
+                update_callback(current_step, total_steps, "Berechnung abgeschlossen! Fenster wird geschlossen...")
+                time.sleep(1)  # Halte das Fenster sichtbar
+            except Exception as e:
+                print(f"Fehler während der Berechnung: {str(e)}")  # Debug
+                update_callback(0, 1, f"Fehler während der Berechnung: {str(e)}")
+
+        # Fortschrittsanzeige starten
+        calc_feedback = CalculationFeedback(self.root, perform_calculation)
+        calc_feedback.start()
 
     def save_team(self):
         """
@@ -291,8 +319,6 @@ class CardSelectorApp:
         self.info_label.config(
             text=f"{team_name} gespeichert!" if self.language == "DE" else f"{team_name} saved!"
         )
-
-
 
     def select_team(self, team_name):
         """

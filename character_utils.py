@@ -2,7 +2,8 @@
 
 from itertools import combinations
 
-def calculate_best_combination(data, available_characters, preselected, language, valid_cards=None, max_slots=6):
+# Berechnung der besten Kombination
+def calculate_best_combination(data, available_characters, preselected, language, valid_cards):
     """
     Berechnet die beste Kombination von Charakteren, um die maximale Anzahl an Karten zu aktivieren.
 
@@ -11,34 +12,24 @@ def calculate_best_combination(data, available_characters, preselected, language
         available_characters (set): Alle verfügbaren Charaktere basierend auf der aktuellen Sprache.
         preselected (set): Bereits vorausgewählte Charaktere.
         language (str): Die aktuelle Sprache ('DE' oder 'EN').
-        valid_cards (dict): Gefilterte Buffs, die berücksichtigt werden sollen (optional).
-        max_slots (int): Maximale Anzahl an wählbaren Charakteren.
+        valid_cards (dict): Gefilterte Buffs, die berücksichtigt werden sollen.
 
     Returns:
         list: Die beste Kombination von Charakteren.
     """
-    # Wenn valid_cards angegeben ist, berücksichtigen Sie nur diese Buffs
-    if valid_cards is not None:
-        relevant_cards = valid_cards
-    else:
-        relevant_cards = data
-
-    # Sammeln aller Charaktere, die in den relevanten Buffs vorkommen
-    relevant_characters = {
-        char[language]
-        for card_info in relevant_cards.values()
-        for char in card_info["characters"]
-    } & available_characters  # Nur Charaktere, die auch verfügbar sind
-
+    max_slots = 6  # Maximale Anzahl an Charakteren
     max_cards = 0
     best_combination = []
 
-    for combo in combinations(relevant_characters - preselected, max_slots - len(preselected)):
+    # Prüfe alle möglichen Kombinationen
+    for combo in combinations(available_characters, max_slots - len(preselected)):
         combined_set = preselected.union(combo)
         activated_cards = {
-            card_name for card_name, card_info in relevant_cards.items()
+            card_name
+            for card_name, card_info in valid_cards.items()
             if set(char[language] for char in card_info["characters"]).issubset(combined_set)
         }
+
         if len(activated_cards) > max_cards:
             max_cards = len(activated_cards)
             best_combination = list(combo)
