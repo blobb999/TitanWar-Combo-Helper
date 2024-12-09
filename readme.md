@@ -90,6 +90,7 @@ TitanWar-Combo-Helper/
 ├── utils.py            # Utility functions
 ├── character_utils.py  # Logic for combinations and buffs
 ├── gui_layout.py       # GUI layout
+├── calc_feedback.py    # Infobox while Calculating
 ├── requirements.txt    # Dependencies
 └── readme.md           # Project description
 ```
