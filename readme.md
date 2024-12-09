@@ -10,7 +10,7 @@ A helpful tool to optimize team combinations and buff strategies in the game **T
 ### 1. **Character Management**
 - **Character Images:** Clear display of all characters with images.
 - **Character Selection:** Select up to 6 characters simultaneously.
-- **Exclusion:** Characters can be excluded or re-included.
+- **Exclusion:** Characters can be excluded or re-included. (with mouse right click)
 
 ### 2. **Buff Optimization**
 - **Autofill:** Automatically calculates the best combinations based on:
@@ -25,7 +25,8 @@ A helpful tool to optimize team combinations and buff strategies in the game **T
 
 ### 4. **Team Management**
 - Save and load teams directly from the GUI.
-- Manage up to 3 teams simultaneously.
+- Manage up to 6 teams simultaneously.
+- Full Reset of all set Teams.
 
 ---
 
