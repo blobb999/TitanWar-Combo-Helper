@@ -376,6 +376,27 @@ class CardSelectorApp:
         for team_name, button in self.team_buttons.items():
             button.config(text=team_name if self.language == "EN" else f"Team {team_name.split()[-1]}")
 
+    def reset_all_teams(self):
+        """
+        Setzt alle Teams zurück, indem alle Mitglieder aus den Teams entfernt werden.
+        """
+        # Alle Teams auf leere Listen setzen
+        for team_name in self.teams.keys():
+            self.teams[team_name] = []
+
+        # Speichere die Änderungen in der Konfigurationsdatei
+        save_config(CONFIG_FILE, self.language, self.excluded_characters, self.teams)
+
+        # Setze die aktuelle Auswahl zurück
+        self.selected_characters = []
+        self.update_selection()
+
+        # Aktualisiere die Info-Anzeige
+        self.info_label.config(
+            text="Alle Teams wurden zurückgesetzt!" if self.language == "DE" else "All teams have been reset!"
+        )
+
+
 if __name__ == "__main__":
     check_and_update_img()  # Verzeichnisprüfung und ggf. Update
     root = Tk()

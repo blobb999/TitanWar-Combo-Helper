@@ -163,3 +163,6 @@ def load_team(config_file, team_name):
             if line.startswith(f"{team_name}:"):
                 return [char.strip() for char in line.strip().split(":")[1].split(",") if char.strip()]
     return []
+
+
+

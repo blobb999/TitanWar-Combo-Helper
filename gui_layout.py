@@ -57,7 +57,7 @@ def setup_gui_layout(app):
     # Team-Buttons
     app.team_var = StringVar(value="Team 1")
     app.team_buttons = {}
-    for team_name in ["Team 1", "Team 2", "Team 3"]:
+    for team_name in ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6"]:
         btn = Button(
             controls_frame,
             text=team_name,
@@ -65,6 +65,11 @@ def setup_gui_layout(app):
         )
         btn.pack(side="left", padx=5)
         app.team_buttons[team_name] = btn
+
+    # Reset-Button hinzufügen
+    reset_button = Button(controls_frame, text="Reset All", command=app.reset_all_teams)
+    reset_button.pack(side="left", padx=5)
+
 
     # Set-Button
     Button(controls_frame, text="Set", command=app.save_team).pack(side="left", padx=5)
