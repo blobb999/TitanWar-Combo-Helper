@@ -197,5 +197,14 @@
             {"DE": "Faroe", "EN": "Faroe"}
         ],
         "type": {"DE": "Verteidigung", "EN": "Defense"}
+    },
+    "Befestigte Bastion": {
+        "name": {"DE": "Nuklear Angriff", "EN": "Nuclear attack"},
+        "characters": [
+            {"DE": "Doris", "EN": "Doris"},
+            {"DE": "Ollus", "EN": "Ollus"},
+            {"DE": "Adriana", "EN": "Adriana"}
+        ],
+        "type": {"DE": "Angriff", "EN": "Attack"}
     }
 }
